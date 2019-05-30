@@ -1,0 +1,53 @@
+body {
+  background-color: hsl(0, 60%, 90%);
+  padding: 2%;
+}
+
+article {
+  width: 56%;
+  float: left;
+  background-color: hsl(120, 60%, 90%);
+  margin: 1%;
+  padding: 1%;
+}
+
+aside {
+  width: 36%;
+  float: right;
+  background-color: hsl(240, 60%, 90%);
+  margin: 1%;
+  padding: 1%;
+}
+
+h1 {
+  font-size: 50px;
+}
+
+#ingredientList, #cartList {
+  list-style: none;
+}
+
+.ingredients, .cartIngredients {
+  position: center;
+  background-color: hsl(60, 60%, 90%);
+  border-radius: 10px;
+  padding: 10px;
+  margin: 10px;
+}
+
+.cartIngredients {
+  background-color: hsl(90, 60%, 90%);
+}
+
+span.item {
+  font-family: Arial;
+  position: center;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+#cartIcon {
+  width: 50px;
+  height: auto;
+  float: left;
+}

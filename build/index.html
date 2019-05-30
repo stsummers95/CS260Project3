@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyGroceryCart</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="styles.css">
+  </head>
+  <body>
+    <div id="app">
+      <img src="cartImage.svg" alt="cart image" id="cartIcon">
+      <h1> MyGroceryCart</h1>
+      <p>Type in a meal you would like to cook. Then choose to add ingredients to your cart, or delete the ingredients if you already have them at home. Bring the list to the store to get all the ingredients you need!</p>
+      <article>
+        <form>
+          <input type="text" placeholder="Enter a meal to search" v-model="searchValue">
+          <button type="submit" v-on:click.prevent="search">Search</button>
+        </form>
+        <div id="recipe-results">
+          <div v-if="loading">
+            <p>Loading. . .</p>
+          </div>
+          <div v-else>
+            <div v-if="currentIngredients.length">
+              <h3>Displaying ingredients for: {{ current.title }}</h3>
+              <p>Select items to move them to the cart or delete them from the list.</p>
+              <button v-on:click="deleteItems">Delete selected items</button>
+              <button v-on:click="addToCart">Move selected items to cart</button>
+              <ul id="ingredientList">
+                <li class="ingredients" v-for="item in currentIngredients">
+                  <span class="item">
+                    <input type="checkbox" v-model="item.checked"/>
+                    <label class="item">{{ item.text }}</label>
+                  </span>
+                </li>
+              </ul>
+            </div>
+            <div v-else>
+              <p>No ingredients to show.</p>
+            </div>
+          </div>
+        </div>
+      </article>
+      <aside>
+        <h2>Cart</h2>
+        <div id="cart-items">
+          <div v-if="currentCart.length">
+            <p>Check an item in the cart to remove it from your list.</p>
+            <ul id="cartList">
+              <li class="cartIngredients" v-for="item in currentCart">
+                <span class="cartItem">
+                  <input type="checkbox" v-model="item.checked" v-on:click="removeFromCart(item.text)">
+                  <label class="cartItem">{{ item.text }}</label>
+                </span>
+              </li>
+            </ul>
+          </div>
+          <div v-else>
+            <p>You have no items in your cart.</p>
+          </div>
+        </div>
+      </aside>
+    </div>
+  </body>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.2/dist/vue.js"></script>
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="script.js"></script>
+  <footer>
+  </footer>
+</html>
